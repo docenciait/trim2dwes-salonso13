@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Nueva Denuncia{% endblock %}
+
+{% block content %}
+<div>
+    <h2>Crear Nueva Denuncia</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Crear Denuncia</button>
+    </form>
+</div>
+{% endblock %}

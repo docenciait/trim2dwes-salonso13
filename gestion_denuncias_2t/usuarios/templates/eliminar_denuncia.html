@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Denuncia{% endblock %}
+
+{% block content %}
+<div class="confirm-delete">
+    <h2>Eliminar Denuncia</h2>
+    <p>¿Estás seguro de que deseas eliminar la denuncia "{{ denuncia.titulo }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn-danger">Confirmar Eliminación</button>
+        <a href="{% url 'lista_denuncias' %}" class="btn-cancel">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

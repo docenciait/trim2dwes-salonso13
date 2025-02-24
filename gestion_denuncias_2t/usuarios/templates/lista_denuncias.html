@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Denuncias{% endblock %}
+
+{% block content %}
+<div>
+    <h2>Denuncias Ciudadanas</h2>
+    <div>
+        {% for denuncia in denuncias %}
+            <div>
+                <h3>{{ denuncia.titulo }}</h3>
+                <img src="{{ denuncia.imagen.url}}" alt="{{ denuncia.titulo }}">
+                <p>{{ denuncia.descripcion}}</p>
+                <div>
+                    <span>{{ denuncia.get_categoria_display }}</span>
+                    <span>{{ denuncia.get_estado_display }}</span>
+                </div>
+                {% if user == denuncia.usuario %}
+                    <div>
+                        <a href="{% url 'editar_denuncia' denuncia.id %}">Editar</a>
+                        <a href="{% url 'eliminar_denuncia' denuncia.id %}">Eliminar</a>
+                    </div>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No hay denuncias registradas.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
